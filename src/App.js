@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { getAllCategories } from "./actions/categories";
+
+import "./App.scss";
+import Layout from "./components/layout";
+import jokeList from "./components/jokeList";
+
+class App extends React.Component {
+  componentDidMount() {
+    this.props.fetchCategories();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Layout>
+          {/* <Route exact path="/" component={jokeList} /> */}
+          <Route exact path="/jokes/:category" component={jokeList} />
+          {/* <Route exact path="/joke" component={JokeDetail} /> */}
+        </Layout>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(
+  connect(
+    undefined,
+    { fetchCategories: getAllCategories }
+  )(App)
+);
