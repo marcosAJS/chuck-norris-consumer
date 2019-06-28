@@ -11,6 +11,6 @@ export const modalScreen = {
 
 export const jokeColumns = [
   { id: "id", label: "ID", sort: true, order: sortOrder.DESC },
-  { id: "updated_at", label: "Updated At", sort: true, order: sortOrder.DESC },
+  { id: "created_at", label: "Created At", sort: true, order: sortOrder.DESC },
   { id: "value", label: "Value", sort: true, order: sortOrder.ASC }
 ];

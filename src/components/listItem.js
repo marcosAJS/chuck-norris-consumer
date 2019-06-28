@@ -2,11 +2,12 @@ import { Grid } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import moment from 'moment';
 import React from "react";
 
 const ListItem = ({ joke }) => (
-  <Grid container key={joke.id}>
-    <Grid xs={4} sm={2}>
+  <Grid className="list-item" container key={joke.id}>
+    <Grid item xs={4} sm={2}>
       <CardMedia
         component="img"
         alt={joke.value}
@@ -16,8 +17,15 @@ const ListItem = ({ joke }) => (
         title="Contemplative Reptile"
       />
     </Grid>
-    <Grid xs={8} sm={10}>
+    <Grid item xs={8} sm={10}>
       <CardContent>
+        <Typography
+          variant="h6"
+          className="list-item-text"
+          color="textSecondary"
+        >
+          {moment(joke.updated_at).format('MM-DD-YYYY')}
+        </Typography>
         <Typography
           variant="body2"
           className="list-item-text"
